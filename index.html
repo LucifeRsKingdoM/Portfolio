@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&family=Jaini&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+            color: #fff;
+        }
+
+        #centerImg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .circle-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgb(85, 85, 85);
+        }
+
+        .circle-img.hovered {
+            box-shadow: 0px 0px 20px 10px rgb(0, 200, 255);
+        }
+
+        .logo-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            margin-right: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container a:hover {
+            transform: translateY(-10px);
+            color: #ff2c53;
+        }
+
+        .text-container {
+            position: absolute;
+            top: -70px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        .text-container p {
+            font-size: 150px;
+            color: rgb(120, 122, 120);
+            transition: color 0.3s ease;
+            margin-left: 410px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(50, end) infinite;
+            font-family: "Foldit", sans-serif;
+        }
+
+        @keyframes typing {
+            from {
+                width: 10%;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .text-container1 {
+            position: absolute;
+            top: 720px;
+            left: 250px;
+            text-decoration: none;
+        }
+
+        .text-container1 p {
+            font-size: 30px;
+            color: rgb(120, 122, 120);
+            transition: color 0.3s ease;
+            margin-left: 410px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 0s steps(50, end) infinite;
+            font-family: "Foldit", sans-serif;
+        }
+
+        .git {
+            position: fixed;
+            bottom: 700px;
+            left: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .git a {
+            margin-right: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .git a:hover {
+            transform: translateY(-5px);
+        }
+
+        .refresh-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .refresh-btn i {
+            color: #606060;
+            font-size: 24px;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile styles */
+       @media (max-width: 768px) {
+            #centerImg {
+                width: 200px;
+                height: 200px;
+            }
+
+            .text-container {
+            position: fixed;
+            top: 50px; /* Adjust as needed */
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+            .text-container p {
+                font-size: 60px;
+                margin: 0 auto; /* Center horizontally */
+                overflow: hidden; /* Prevent overflow */
+                white-space: nowrap; /* Keep text in one line */
+                text-align: center; /* Start animation from the left */
+                animation: typing 4s steps(50, end) infinite; /* Adjust as needed */
+            }
+
+       
+            .text-container1 {
+                position: absolute;
+                top: 565px; /* Adjust as needed */
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+
+            .text-container1 p {
+                font-size: 20px;
+                margin: 0 auto; /* Center horizontally */
+            }
+
+
+            .logo-container {
+                position: absolute; /* Ensure it's positioned relative to its container */
+                bottom: 20px; /* Set your desired bottom offset */
+                left: 0;
+                right: 0;
+                text-align: center;
+                display: flex;
+                justify-content: center; /* Center logos horizontally */
+                gap: 10px; /* Optional: Space between logos */
+            }
+
+            .logo-container a {
+                margin: 0 5px; /* Adjust spacing between logos if needed */
+            }
+
+            .git {
+                bottom: 20px;
+                left: 20px;
+            }
+
+        } 
+
+        .welcome-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="home.html">
+        <img id="centerImg" src="img/dp.jpg" alt="Center Image" class="circle-img">
+    </a>
+    <canvas id='world'></canvas>
+
+    <div class="git">
+        <a href="https://github.com/LucifeRsKingdoM"><i class="fab fa-github fa-2x" style="color: #606060;"></i></a>
+    </div>
+
+    <div class="logo-container">
+        <a href="https://www.instagram.com/just.___lucifer__"><i class="fab fa-instagram fa-2x" style="color: #606060"></i></a>
+        <a href="https://twitter.com/"><i class="fab fa-twitter fa-2x" style="color: #606060"></i></a>
+        <a href="https://www.linkedin.com/in/yogesh490807"><i class="fab fa-linkedin fa-2x" style="color: #606060"></i></a>
+    </div>
+
+    <div class="text-container">
+        <p id="changingText" class="typing">W E L C O M E</p>
+    </div>
+
+    <a href="home.html" class="text-container1">
+        <p class="sub-text">To ---- LucifeR's KingdoM</p>
+    </a>
+
+    <div class="welcome-alert" id="welcomeAlert">WELCOME</div>
+
+    <button class="refresh-btn" onclick="refreshPage()">
+        <i class="fas fa-sync-alt"></i>
+    </button>
+
+    <script>
+        window.onload = function () {
+            if (!sessionStorage.getItem('loadedOnce')) {
+                sessionStorage.setItem('loadedOnce', 'true');
+                location.reload();
+            } else {
+                setTimeout(function () {
+                    document.getElementById('welcomeAlert').style.display = 'block';
+                }, 100);
+
+                setTimeout(function () {
+                    document.getElementById('welcomeAlert').style.display = 'none';
+                }, 2100); // 2 seconds after showing the alert
+            }
+
+            init(); // Initialize canvas and particles
+        };
+
+        var SCREEN_WIDTH = window.innerWidth;
+        var SCREEN_HEIGHT = window.innerHeight;
+        var RADIUS = 200;
+        var RADIUS_SCALE = 1;
+        var RADIUS_SCALE_MIN = 1;
+        var RADIUS_SCALE_MAX = 1.5;
+        var QUANTITY = 25;
+        var canvas;
+        var context;
+        var particles;
+        var mouseX = SCREEN_WIDTH * 0.5;
+        var mouseY = SCREEN_HEIGHT * 0.5;
+        var mouseIsDown = false;
+        var centerImg = document.getElementById('centerImg');
+        var isMouseMoving = false;
+
+        function init() {
+            canvas = document.getElementById('world');
+            if (canvas && canvas.getContext) {
+                context = canvas.getContext('2d');
+                window.addEventListener('mousemove', handleMouseMove);
+                window.addEventListener('mouseleave', handleMouseLeave);
+                window.addEventListener('resize', windowResizeHandler, false);
+                createParticles();
+                windowResizeHandler();
+                setInterval(loop, 1000 / 60);
+                setInterval(changeText, 2000);
+            }
+        }
+
+
+        function windowResizeHandler() {
+            SCREEN_WIDTH = window.innerWidth;
+            SCREEN_HEIGHT = window.innerHeight;
+
+            canvas.width = SCREEN_WIDTH;
+            canvas.height = SCREEN_HEIGHT;
+
+            // Other resizing logic, like recalculating positions or sizes of elements
+        }
+
+
+        function createParticles() {
+            particles = [];
+            for (var i = 0; i < QUANTITY; i++) {
+                var particle = {
+                    size: 1,
+                    position: { x: mouseX, y: mouseY },
+                    offset: { x: 0, y: 0 },
+                    shift: { x: mouseX, y: mouseY },
+                    speed: 0.01 + Math.random() * 0.04,
+                    targetSize: 1,
+                    fillColor: '#' + (Math.random() * 0x404040 + 0xaaaaaa | 0).toString(16),
+                    orbit: RADIUS * .5 + (RADIUS * .5 * Math.random())
+                };
+                particles.push(particle);
+            }
+        }
+
+        function handleMouseMove(event) {
+            mouseX = event.clientX - (window.innerWidth - SCREEN_WIDTH) * .5;
+            mouseY = event.clientY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+            if (!isMouseMoving) {
+                centerImg.classList.add('hovered');
+                isMouseMoving = true;
+            }
+        }
+
+        function handleMouseLeave(event) {
+            centerImg.classList.remove('hovered');
+            isMouseMoving = false;
+        }
+
+        function windowResizeHandler() {
+            SCREEN_WIDTH = window.innerWidth;
+            SCREEN_HEIGHT = window.innerHeight;
+            canvas.width = SCREEN_WIDTH;
+            canvas.height = SCREEN_HEIGHT;
+        }
+
+        function loop() {
+            if (mouseIsDown) {
+                RADIUS_SCALE += (RADIUS_SCALE_MAX - RADIUS_SCALE) * (0.02);
+            } else {
+                RADIUS_SCALE -= (RADIUS_SCALE - RADIUS_SCALE_MIN) * (0.02);
+            }
+            RADIUS_SCALE = Math.min(RADIUS_SCALE, RADIUS_SCALE_MAX);
+            context.fillStyle = 'rgba(0,0,0,0.20)';
+            context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+            for (i = 0, len = particles.length; i < len; i++) {
+                var particle = particles[i];
+                var lp = { x: particle.position.x, y: particle.position.y };
+                particle.offset.x += particle.speed;
+                particle.offset.y += particle.speed;
+                particle.shift.x += (mouseX - particle.shift.x) * (particle.speed);
+                particle.shift.y += (mouseY - particle.shift.y) * (particle.speed);
+                particle.position.x = particle.shift.x + Math.cos(i + particle.offset.x) * (particle.orbit * RADIUS_SCALE);
+                particle.position.y = particle.shift.y + Math.sin(i + particle.offset.y) * (particle.orbit * RADIUS_SCALE);
+                particle.position.x = Math.max(Math.min(particle.position.x, SCREEN_WIDTH), 0);
+                particle.position.y = Math.max(Math.min(particle.position.y, SCREEN_HEIGHT), 0);
+                particle.size += (particle.targetSize - particle.size) * 0.05;
+                if (Math.round(particle.size) == Math.round(particle.targetSize)) {
+                    particle.targetSize = 1 + Math.random() * 7;
+                }
+                context.beginPath();
+                context.fillStyle = particle.fillColor;
+                context.strokeStyle = particle.fillColor;
+                context.lineWidth = particle.size;
+                context.moveTo(lp.x, lp.y);
+                context.lineTo(particle.position.x, particle.position.y);
+                context.stroke();
+                context.arc(particle.position.x, particle.position.y, particle.size / 2, 0, Math.PI * 2, true);
+                context.fill();
+            }
+        }
+
+        function changeText() {
+            var textContainer = document.getElementById('changingText');
+            var text = textContainer.innerHTML;
+            var newText = text.slice(0, 0);
+            textContainer.innerHTML = newText.length === 0 ? 'W E L C O M E' : newText;
+        }
+
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
