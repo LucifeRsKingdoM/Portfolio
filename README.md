@@ -1,3 +1,1 @@
-My personal portfolio to preview 
-
-visit -- " https://luciferskingdom.github.io/Portfolio "
+My personal portfolio preview visit -- " https://luciferskingdom.github.io/Portfolio "
