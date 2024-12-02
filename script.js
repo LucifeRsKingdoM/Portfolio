@@ -1,3 +1,4 @@
+
 // active hamburger menu 
 let menuIcon = document.querySelector(".menu-icon");
 let navlist = document.querySelector(".navlist")
@@ -40,6 +41,66 @@ buttons.forEach((button, index) => {
 
 
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    emailjs.init("ck0hO4TFVICbAQW4X"); // Initialize EmailJS only once
+
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message || !phone) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+            alert('Please enter a valid 10-digit phone number.');
+            return;
+        }
+
+        // Send email using EmailJS
+        emailjs.sendForm('service_qjavn8k', 'template_iawlrxq', form)
+            .then(function () {
+                alert('Message sent successfully! I will reach you as soon as possible.');
+                form.reset(); // Reset the form after successful submission
+                // Redirect to the home page
+                window.location.href = 'index.html'; // Replace 'index.html' with the URL of your home page
+            })
+            .catch(function (error) {
+                alert('Failed to send message. Error: ' + error.text);
+            });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // portfolio fillter 
 
 var mixer = mixitup('.portfolio-gallery',{
@@ -77,6 +138,60 @@ var swiper = new Swiper(".mySwiper", {
         },
     }
   });
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    emailjs.init("ck0hO4TFVICbAQW4X"); // Initialize EmailJS only once
+
+    const form = document.getElementById('contact-form1');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Validation
+        const name = document.getElementById('name1').value;
+        const email = document.getElementById('email1').value;
+        const phone = document.getElementById('phone1').value;
+        const message = document.getElementById('message1').value;
+
+        if (!name || !email || !message || !phone) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+            alert('Please enter a valid 10-digit phone number.');
+            return;
+        }
+
+        // Send email using EmailJS
+        emailjs.sendForm('service_qjavn8k', 'template_iawlrxq', form)
+            .then(function () {
+                alert('Message sent successfully! I will reach you as soon as possible.');
+                form.reset(); // Reset the form after successful submission
+                // Redirect to the home page
+                window.location.href = 'index.html'; // Replace 'index.html' with the URL of your home page
+            })
+            .catch(function (error) {
+                alert('Failed to send message. Error: ' + error.text);
+            });
+    });
+});
+
+
+
+
+
+
 
 
 
@@ -187,53 +302,8 @@ ScrollReveal().reveal('.allServices,.portfolio-gallery,.blog-box,footer,.img-her
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-info','contact-info1');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
 
-        // Basic validation
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
 
-        if (!name || !email || !message) {
-            alert('Please fill out all fields.');
-            return;
-        }
 
-        // Check for valid email format
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
 
-        // If validation passes
-        alert('Submitted successfully. I will reach you as soon as possible.');
-
-        // Redirect to the home page after submission
-        setTimeout(() => {
-            window.location.href = '/'; // Change this to the correct URL if needed
-        }, 2000); // Delay for alert message display
-    });
-});
-
-(function(){
-            emailjs.init("ck0hO4TFVICbAQW4X"); // Use your actual public key
-        })();
-
-        function sendEmail(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            emailjs.sendForm('service_qjavn8k', 'template_iawlrxq', this) // Replace with your actual template ID
-                .then(function() {
-                    alert('Message sent successfully! I will reach you as soon as possible.');
-                    window.location.href = 'index.html'; // Redirect to home page
-                }, function(error) {
-                    alert('Failed to send message. Error: ' + JSON.stringify(error));
-                });
-        }
-
-        document.getElementById('contact-form').addEventListener('submit', sendEmail);
