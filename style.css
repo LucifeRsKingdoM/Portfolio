@@ -131,6 +131,25 @@ ul.navlist{
 }
 
 
+#mob{
+    display: none;
+}
+
+@media(max-width:768px){ 
+    #mob{
+        display: inline;
+    }
+
+    #mob1{
+        display: none;
+    }
+    
+}
+
+
+
+
+
 /* ==================== home section css code ============================ */
 section{
     padding: 90px 8%;
@@ -1030,6 +1049,14 @@ form .btn{
     cursor: pointer;
     border: none;
 }
+
+
+.bg-icon1 i {
+    font-size: 34px;
+    color: #000000; /* Change this color as needed */
+    transition: color 0.3s ease;
+}
+
 
 /* ==================== Skills section css code ============================ */
 
