@@ -799,12 +799,25 @@ section{
 }
 
 
+svg {
+    width: 30px;    /* Set a specific width */
+    height: 30px;   /* Set a specific height */
+    fill: #343434;     /* Set the color */
+    align-items: center;
+    justify-items: center;
+}
 
 
+svg.twitter-icon {
+    width: 28px;    /* Set a specific width */
+    height: 28px;   /* Set a specific height */
+}
 
 
-
-
+svg.tele-icon {
+    width: 36px;    /* Set a specific width */
+    height: 36px;   /* Set a specific height */
+}
 
 
 
