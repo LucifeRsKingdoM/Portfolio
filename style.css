@@ -1185,6 +1185,7 @@ footer{
     background: var(--gradient-color-bg);
     border-radius: 50%;
     color: #fff;
+    border: 1px solid rgb(255, 255, 255);
     place-items: center;
     font-size: 25px;
 }
